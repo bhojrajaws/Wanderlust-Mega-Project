@@ -68,7 +68,7 @@ stage("Git: Code update and push to GitHub") {
                     git commit -m "Updated environment variables" || echo "No changes to commit"
 
                     echo "Pushing changes to GitHub:"
-                    git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/bhojrajaws/Wanderlust-Mega-Project.git main
+                    git push https://github.com/bhojrajaws/Wanderlust-Mega-Project.git main
                 '''
             }
         }
