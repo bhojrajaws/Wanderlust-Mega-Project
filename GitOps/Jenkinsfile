@@ -53,11 +53,11 @@ pipeline {
             }
         }
         
-        stage("Git: Code update and push to GitHub") {
+     stage("Git: Code update and push to GitHub") {
     steps {
         script {
             withCredentials([usernamePassword(credentialsId: 'GitHubCred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-                sh '''
+                sh """
                     echo "Checking repository status: "
                     git status
 
@@ -65,15 +65,16 @@ pipeline {
                     git add .
 
                     echo "Committing changes: "
-                    git commit -m "Updated environment variables" || echo "No changes to commit"
+                    git commit -m 'Updated environment variables' || echo "No changes to commit"
 
                     echo "Pushing changes to GitHub: "
                     git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/bhojrajaws/Wanderlust-Mega-Project.git main
-                '''
+                """
             }
         }
     }
 }
+
 
     }
   post {
